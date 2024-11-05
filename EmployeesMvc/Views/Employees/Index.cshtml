@@ -1,0 +1,34 @@
+﻿@model EmployeesMvc.Models.Employee[]
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://unpkg.com/@@picocss/pico@@latest/css/pico.classless.min.css">
+</head>
+<body>
+
+    <h1>Lista över Anställda</h1>
+
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <ul>
+                @item.Name
+                @item.Email
+                <a href="Details/@item.Id">Till detaljvy</a>
+            </ul>
+
+        }
+    </table>
+    <P>
+        <a asp-controller="Employees" asp-action="Create">Lägg till ny anställd </a>
+    </P>
+
+</body>
+</html>
