@@ -10,6 +10,7 @@ namespace EmployeesMvc
             builder.Services.AddControllersWithViews();
             var app = builder.Build();
 
+            app.UseStaticFiles();
             // Stöd för Route-attribut på våra Action-metoder
             app.MapControllers();
             app.Run();
