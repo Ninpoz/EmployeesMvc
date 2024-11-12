@@ -11,7 +11,7 @@
             <ul>
                 @item.Name
                 @item.Email
-                <a href="Details/@item.Id">Till detaljvy</a>
+                <a asp-controller="Employees" asp-action="Details" asp-route-id="@item.Id">Till detaljvy</a>
             </ul>
 
         }

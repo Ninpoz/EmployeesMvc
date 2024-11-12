@@ -31,7 +31,7 @@ namespace EmployeesMvc.Controllers
             return View(employee);
         }
 
-        [HttpGet("/details/{id}")]
+        [HttpGet("/view-details/{id}")]
         public IActionResult Details(int id)
         {
             var employee = _dataService.GetById(id);
