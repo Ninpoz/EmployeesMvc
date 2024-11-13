@@ -1,0 +1,14 @@
+﻿@model Employee
+
+@{
+    ViewBag.Title = "Detaljer om Anställd";
+}
+
+<div>
+    <h2>Detaljer för @Model.Name</h2>
+    <p>E-Mail: @Model.Email</p>
+    <p>ID: @Model.Id</p>
+    <p>Arbetsplats :@Model.Company?.Name</p>
+    <a asp-controller="Employees" asp-action="Index">Tillbaka till lista</a>
+ 
+</div>

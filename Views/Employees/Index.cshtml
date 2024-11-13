@@ -1,29 +1,27 @@
 ﻿@model Employee[]
-
 @{
-    ViewBag.Title = "SomeOffice";
+    ViewBag.Title = "Alla Anställda";
 }
-<div style="background-color: gainsboro; max-width: 500px;">
-<table>
-    
-    <tr>
-        <th>Name</th>
-    </tr>
-    @foreach (var item in Model)
-    {
+
+<table class="table table-striped">
+    <thead>
         <tr>
-            <td>@item.Name</td>
+            <th>Namn</th>
+            <th>Email</th>
+            <th>Företag</th>
+            <th>Detaljer</th>
         </tr>
-    }
-
-    
-    
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Company?.Name  Arbetslös</td>
+                <td><a class="btn btn-info" asp-controller="Employees" asp-action="Details" asp-route-id="@item.Id">Till detaljvy</a></td>
+            </tr>
+        }
+    </tbody>
 </table>
-</div>
-
-<a asp-controller="Employees" asp-action="Create">Skapa Ny anställd</a>
-
-<partial name="_TimeBox" model="DateTime.Now" />
-    
-    
-    
+<a class="btn btn-primary" asp-controller="Employees" asp-action="Create">Skapa Ny anställd</a>

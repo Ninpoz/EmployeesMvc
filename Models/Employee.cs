@@ -13,4 +13,11 @@ public class Employee
     [EmailAddress(ErrorMessage = "Fel format på mailadressen")]
     //[Required(ErrorMessage = "Måste fyllas i")]
     public required string Email { get; set; }
+
+    //Company relation
+
+ 
+    public int? CompanyId { get; set; }
+    public Company? Company { get; set; }
+
 }

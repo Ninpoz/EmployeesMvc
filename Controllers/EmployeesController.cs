@@ -36,5 +36,12 @@ namespace EmployeesMVC.Controllers
             _dataService.Add(employee);
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet("/view-details/{id}")]
+        public IActionResult Details(int id)
+        {
+            var employee = _dataService.GetById(id);
+            return View(employee);
+        }
     }
 }
