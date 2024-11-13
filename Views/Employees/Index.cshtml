@@ -1,0 +1,29 @@
+﻿@model Employee[]
+
+@{
+    ViewBag.Title = "SomeOffice";
+}
+<div style="background-color: gainsboro; max-width: 500px;">
+<table>
+    
+    <tr>
+        <th>Name</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+        </tr>
+    }
+
+    
+    
+</table>
+</div>
+
+<a asp-controller="Employees" asp-action="Create">Skapa Ny anställd</a>
+
+<partial name="_TimeBox" model="DateTime.Now" />
+    
+    
+    
