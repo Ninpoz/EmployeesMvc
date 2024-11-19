@@ -2,10 +2,10 @@
 {
     public interface IDataService
     {
-        Employee[]GetAll();
+        Task<Employee[]>GetAllAsync();
 
-        Employee GetById(int id);
+        Task<Employee> GetByIdAsync(int id);
 
-        void Add(Employee employee);
+        Task AddAsync(Employee employee);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EmployeesMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeesMVC.Controllers
 {
@@ -13,34 +14,32 @@ namespace EmployeesMVC.Controllers
         }
 
         [HttpGet("")]
-
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var Model = _dataService.GetAll();
+            var Model = await _dataService.GetAllAsync();
             return View(Model);
         }
 
-        [HttpGet("Create")]   //GET skapar ett topt formulär för att skapa en ny employee
+        [HttpGet("Create")] 
         public IActionResult Create()
         {
             return View();
         }
 
-        [HttpPost("Create")]  //Tar emot data från sagda formulär, validerar den och om OK, lägger till 
-                              // en ny employee i listan, samt returnerar användaren ill index-sidan.
-        public IActionResult Create(Employee employee)
+        [HttpPost("Create")]  
+        public async Task<IActionResult> Create(Employee employee)
         {
             if (!ModelState.IsValid)
             return View(employee);
 
-            _dataService.Add(employee);
+            await _dataService.AddAsync(employee);
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet("/view-details/{id}")]
-        public IActionResult Details(int id)
+        public async  Task<IActionResult>Details(int id)
         {
-            var employee = _dataService.GetById(id);
+            var employee = await _dataService.GetByIdAsync(id);
             return View(employee);
         }
     }
