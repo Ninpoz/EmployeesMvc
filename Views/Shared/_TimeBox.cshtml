@@ -1,15 +1,7 @@
-﻿
+﻿@model DateTime
 
-@model DateTime
+<div 
 
-<div style="
-    display:flex;
-    max-height: 100px;
-    max-width: 200px;
-    background-color: deeppink; 
-    padding: 10px;
-    border-radius: 5px">
-<h4>Aktuell tid: </h4>
-<p>@Model.ToString("HH:mm:ss")</p>
+    <h4 style="margin: 0; font-size: 18px; color: #555;">Aktuell tid:</h4>
+    <p style="margin: 5px 0; font-size: 20px; font-weight: bold;">@Model.ToString("HH:mm:ss")</p>
 </div>
-

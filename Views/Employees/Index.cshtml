@@ -1,27 +1,32 @@
-﻿@model Employee[]
+﻿@model IndexVM[]
 @{
     ViewBag.Title = "Alla Anställda";
 }
 
-<table class="table table-striped">
+<table class="table">
     <thead>
         <tr>
-            <th>Namn</th>
+            <th>Name</th>
             <th>Email</th>
-            <th>Företag</th>
-            <th>Detaljer</th>
+            <th>Highlighted</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="@(item.ShowAsHighlighted ? "text-danger" : "")">
                 <td>@item.Name</td>
                 <td>@item.Email</td>
-                <td>@item.Company?.Name  Arbetslös</td>
-                <td><a class="btn btn-info" asp-controller="Employees" asp-action="Details" asp-route-id="@item.Id">Till detaljvy</a></td>
+                <td>
+                    <a class="btn btn-info" asp-controller="Employees" asp-action="Details" asp-route-id="@item.Id">
+                        Till detaljvy
+                    </a>
+                </td>
             </tr>
         }
+
+
     </tbody>
 </table>
 <a class="btn btn-primary" asp-controller="Employees" asp-action="Create">Skapa Ny anställd</a>

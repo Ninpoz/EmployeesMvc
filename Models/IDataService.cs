@@ -1,11 +1,13 @@
-﻿namespace EmployeesMVC.Models
+﻿using EmployeesMVC.Models.ViewModels;
+
+namespace EmployeesMVC.Models
 {
     public interface IDataService
     {
-        Task<Employee[]>GetAllAsync();
+        Task<IndexVM[]>GetAllAsync();
 
         Task<Employee> GetByIdAsync(int id);
 
-        Task AddAsync(Employee employee);
+        Task AddAsync(CreateVM createVM);
     }
 }

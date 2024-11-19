@@ -1,17 +1,13 @@
 ﻿using EmployeesMVC.Models;
+using EmployeesMVC.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeesMVC.Controllers
 {
-    public class EmployeesController : Controller
+    public class EmployeesController(IDataService _dataService) : Controller
     {
-        //private static DataService _dataService = new DataService();
-        private readonly IDataService _dataService;
-        public EmployeesController(IDataService dataService)
-        {
-            _dataService = dataService;
-        }
+       
 
         [HttpGet("")]
         public async Task<IActionResult> Index()
@@ -27,12 +23,12 @@ namespace EmployeesMVC.Controllers
         }
 
         [HttpPost("Create")]  
-        public async Task<IActionResult> Create(Employee employee)
+        public async Task<IActionResult> Create(CreateVM createVM)
         {
             if (!ModelState.IsValid)
-            return View(employee);
+            return View(createVM);
 
-            await _dataService.AddAsync(employee);
+            await _dataService.AddAsync(createVM);
             return RedirectToAction(nameof(Index));
         }
 
